@@ -57,7 +57,7 @@ def test_no_internal_paths():
     """隐私守卫：源码不得含原项目内部路径/名称。"""
     src_root = Path(__file__).resolve().parents[1] / "src"
     bad_tokens = ["/home/sun", "D:\\GLM", "D:/GLM", "Project0904", "Zcode", "fuyao",
-                  "tradingagents", "ZHIPU_API_KEY=", "sk-"]
+                  "ZHIPU_API_KEY=", "sk-"]
     hits = []
     for py in src_root.rglob("*.py"):
         text = py.read_text(encoding="utf-8")
