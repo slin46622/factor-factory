@@ -1,5 +1,7 @@
 # Factor Factory 因子工厂
 
+**中文** | [English](README_EN.md)
+
 LLM 驱动的 A 股 alpha 因子自动挖掘流水线。灵感来自微软 [RD-Agent](https://github.com/microsoft/RD-Agent)（NeurIPS 2025），但目标相反：**不追求大而全的科研框架，只做一台拎包即用的"因子生产机器"**。
 
 ```

@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install deps (CI 只需轻量依赖, qlib 由用户环境自备)
+        run: pip install pandas numpy requests pytest
+
+      - name: Run tests (含隐私守卫)
+        env:
+          FF_HOME: ${{ runner.temp }}/ff_home
+        run: pytest tests/ -v
+
+  privacy-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 扫描发布内容中的敏感串
+        run: |
+          HITS=$(git grep -lE "/home/sun|sk-[A-Za-z0-9]{20}|Zcode|Project0904|fuyao|tradingagents" -- "src/" "scripts/" "seeds/" "README.md" "pyproject.toml" || true)
+          if [ -n "$HITS" ]; then echo "⚠️ 敏感串命中:"; echo "$HITS"; exit 1; fi
+          echo "✓ 发布内容零敏感串"
