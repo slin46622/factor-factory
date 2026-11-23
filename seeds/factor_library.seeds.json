@@ -1,0 +1,32 @@
+[
+  {
+    "expr": "($high-Greater($open, $close))/$open",
+    "name": "KUP",
+    "ic_mean": -0.0304,
+    "icir": -0.2353,
+    "ic_std": 0.1292,
+    "n_days": 954,
+    "tier": "strong",
+    "source": "qlib-alpha158"
+  },
+  {
+    "expr": "$high/$close",
+    "name": "HIGH0",
+    "ic_mean": -0.0267,
+    "icir": -0.1809,
+    "ic_std": 0.1478,
+    "n_days": 954,
+    "tier": "strong",
+    "source": "qlib-alpha158"
+  },
+  {
+    "expr": "Resi($close, 5)/$close",
+    "name": "RESI5",
+    "ic_mean": 0.0263,
+    "icir": 0.1908,
+    "ic_std": 0.1379,
+    "n_days": 952,
+    "tier": "strong",
+    "source": "qlib-alpha158"
+  }
+]
