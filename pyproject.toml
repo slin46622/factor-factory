@@ -23,7 +23,7 @@ akshare = ["akshare>=1.10"]
 
 [project.scripts]
 factor-factory-daemon = "factor_factory.daemon:main"
-factor-factory-dashboard = "factor_factory.dashboard:main"
+factor-factory-dashboard = "factor_factory.dashboard:main_once"
 factor-factory-decay = "factor_factory.decay:main"
 
 [tool.setuptools.packages.find]
